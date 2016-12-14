@@ -1,0 +1,33 @@
+<div class="row">
+    <button class="col-sm-2 col-sm-offset-5 btn btn-primary" (click)="newModal.show()" style="margin-top: 1em; margin-bottom: 1em;"> + </button>
+</div>
+
+<div *ngFor="let n of notes" (click)="select(n)" style="margin-bottom:2em;">
+    <div class="row">
+        <textarea rows="10" class="col-md-8 col-md-offset-2" [(ngModel)]="n.content" >{{n.content}}</textarea>
+    </div>
+    <div class="row">
+        <button class="col-md-1 col-md-offset-5 btn btn-success" [disabled]="selectedNote !== n || !n.content" (click)="updateNote(n)">Save</button>
+        <button class="col-md-1 btn btn-danger" [disabled]="selectedNote !== n || !n.content" (click)="deleteNote(n)">Delete</button>
+    </div>
+</div>    
+
+
+<div bsModal #newModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="newModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">New Note</h4>
+      </div>
+      <div class="modal-body" style="background: lightblue;">  
+        <div class="row">
+            <textarea class="col-md-6 col-md-offset-3" [(ngModel)]="newNote" rows="6" cols="40"></textarea>
+        </div>
+            <button (click)="createNote(newNote); newModal.hide()">Create</button>    
+      </div>
+    </div>
+  </div>
+</div>

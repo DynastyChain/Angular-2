@@ -1,0 +1,9 @@
+body {
+    background: blue;
+}
+.box {
+    margin: 2em;
+}
+.thumb {
+    max-width: 400px;
+}

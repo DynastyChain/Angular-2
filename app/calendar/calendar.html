@@ -1,0 +1,8 @@
+<!--<h1>Calendar View</h1>-->
+<!--<alert type="info">ng2-bootstrap hello world!</alert>-->
+<pre>Selected date is: <em *ngIf="dt">{{ getDate() | date:'fullDate'}}</em></pre>
+<div style="display:inline-block; min-height:290px;">
+    <datepicker [(ngModel)]="dt" [minDate]="minDate" [showWeeks]="true"></datepicker>
+    <timepicker [(ngModel)]="tt"></timepicker>
+    <h2>{{tt}}</h2>
+</div>

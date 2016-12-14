@@ -1,0 +1,13 @@
+<div *ngIf="todo">    
+        <label>Name</label><br>
+        <input [(ngModel)]="todo.name" placeholder="Name">
+        
+        <div class="row">            
+                <timepicker style="display:inline-block;" [(ngModel)]="tt" ></timepicker>            
+        </div>
+    
+        <div style="display:inline-block; min-height:290px;">
+            <datepicker [(ngModel)]="todo.due" [minDate]="minDate" [showWeeks]="true"></datepicker>
+            <!--<button (click)="updateTodo()">Save</button>-->
+        </div>     
+</div>    

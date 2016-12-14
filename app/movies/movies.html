@@ -1,0 +1,11 @@
+<h1>Search Movies</h1>
+<label>Title</label>
+<input [(ngModel)]="movieTitle">
+<button (click)="onSubmit()">Search</button>
+
+<div *ngIf="movieData">
+    <h1>{{ movieData.Title }}</h1>
+    <h1>{{ movieData.Year }}</h1>
+    <h1>{{ movieData.Plot }}</h1>
+
+</div>

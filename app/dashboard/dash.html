@@ -1,0 +1,20 @@
+<div class="container" style="text-align: center;">
+    <div class="row">
+        <h1>Today is {{title}}</h1><br><br>
+        <h1><u>Due Today</u></h1>
+            <div *ngFor="let d of dueToday"> - {{d.name}} Due: {{d.due | date:'shortTime'}}</div><br>
+        <h1><u>Due Tomorrow</u></h1>
+            <div *ngFor="let t of dueTomorrow"> - {{t.name}} Due: {{t.due | date:'shortTime'}}</div><br>
+        <h1><u>Due In 2 Days</u></h1>
+            <div *ngFor="let a of dueAfterTomorrow"> - {{a.name}} Due: {{a.due | date:'shortTime'}}</div>
+    </div>
+    <!--<div class="row">
+            <weather></weather>
+    </div>
+    <div class="row" style="overflow-y: scroll; max-height: 30vh;">
+        <news></news>
+    </div>
+    <div class="row">
+        <my-notes></my-notes>
+    </div>-->
+</div>

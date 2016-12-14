@@ -1,0 +1,85 @@
+
+<div class="row">
+    <!--<h1 class="col-sm-1 col-sm-offset-2">Todos</h1>-->
+    <button style="margin-bottom: 1em; margin-top: 1em;" class="btn btn-primary col-sm-2 col-sm-offset-5" (click)="lgModal.show()" > + </button>
+</div>    
+
+<div class="col-md-8 col-md-offset-2">
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Modify</th>
+      <th>NAME</th>
+      <th>DUE</th>
+      <th>COMMENTS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let t of todos" (click)="onSelect(t)">
+      <td><button [disabled]="selectedTodo !== t" (click)="detail.show()" class="btn btn-primary">Edit</button>
+      <button [disabled]="selectedTodo !== t" (click)="deleteTodo(selectedTodo)" class="btn btn-danger">Delete</button></td>
+      <td [class.selected]="selectedTodo===t" [class.overdue]="isOverdue(t.due)">{{t.name}}</td>
+      <td [class.selected]="selectedTodo===t" [class.overdue]="isOverdue(t.due)">{{t.due | date:'short'}}</td>
+      <td [class.selected]="selectedTodo===t" [class.overdue]="isOverdue(t.due)">{{t.comments}}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="lgModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">New Todo</h4>
+      </div>
+      <div class="modal-body" style="background: darkblue;">  
+        <div class="row" style="margin-bottom: 1em;">
+            <input [(ngModel)]="newTodoName" placeholder="Name" required>
+        </div>
+        <div class="row">
+            <textarea [(ngModel)]="newTodoComment" rows="4" cols="35" placeholder="Comments..."></textarea>
+        </div>    
+        <div class="row">
+            <timepicker style="display:inline-block;" [(ngModel)]="tt"></timepicker>  
+        </div>
+        <div style="display:inline-block; min-height:290px;">
+            <datepicker [(ngModel)]="newTodoDue" [minDate]="minDate" [showWeeks]="true"></datepicker>
+            <button [disabled]="!newTodoName || !newTodoDue" (click)="createTodo(newTodoName, newTodoDue); lgModal.hide()">Save</button>     
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div bsModal #detail="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="detail.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Todo Details</h4>
+      </div>
+      <div class="modal-body" style="background: black;">
+        <div class="row" style="margin-bottom: 1em;">  
+            <input *ngIf="selectedTodo" [(ngModel)]="selectedTodo.name" placeholder="Name" required>
+        </div>
+        <div class="row">
+            <textarea *ngIf="selectedTodo" [(ngModel)]="selectedTodo.comments" rows="4" cols="35" placeholder="Comments..."></textarea>
+        </div>            
+        <div class="row">            
+                <timepicker style="display:inline-block;" [(ngModel)]="tt"></timepicker>            
+        </div>        
+        <div style="display:inline-block; min-height:290px;">
+            <datepicker *ngIf="selectedTodo" [(ngModel)]="selectedTodo.due" [minDate]="minDate" [showWeeks]="true"></datepicker>
+            <button (click)="updateTodo(selectedTodo); detail.hide()">Save</button>     
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

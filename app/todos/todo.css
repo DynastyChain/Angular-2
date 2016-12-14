@@ -1,0 +1,21 @@
+ul {
+    list-style: none;
+}
+li h2:hover {
+    color: blue;
+}
+.selected {
+    /*-webkit-transform: scale(1.15);
+    transform: scale(1.15);*/
+    /*background: yellow;*/
+    color:yellow;
+}
+.overdue {
+    color: red;
+}
+.strike {
+    text-decoration: line-through;
+}
+.modal {
+    text-align: center;
+}

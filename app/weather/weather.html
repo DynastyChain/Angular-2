@@ -1,0 +1,22 @@
+<div class='text-center' style="margin:1.5em;">
+    <button (click)="getForecast(); threeDay();" class="btn btn-primary">update</button>
+</div>
+
+    <div class="row" style="margin:1.5em;">
+        <div class="text-center" *ngIf="forecast">
+            <h2><u>Now</u>: {{forecast.weather[0].description}} {{forecast.main.temp}}˚</h2>            
+        </div>
+    </div>
+    <div class="row" style="margin:1.5em;">        
+        <div class="text-center" *ngIf="threeDayData">
+            <h2><u>Today</u>: {{threeDayData[0].weather[0].description}} {{threeDayData[0].temp.min}}˚ - {{threeDayData[0].temp.max}}˚</h2>
+        </div>
+
+        <div class="text-center" *ngIf="threeDayData">
+            <h2><u>Tomorrow</u>: {{threeDayData[1].weather[0].description}} {{threeDayData[1].temp.min}}˚ - {{threeDayData[1].temp.max}}˚</h2>
+        </div>
+
+        <div class="text-center" *ngIf="threeDayData">
+            <h2><u>In 2 Days</u>: {{threeDayData[1].weather[0].description}} {{threeDayData[2].temp.min}}˚ - {{threeDayData[2].temp.max}}˚</h2>
+        </div>
+    </div>

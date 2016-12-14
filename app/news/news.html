@@ -1,0 +1,7 @@
+<div class="box row text-center" *ngFor="let a of googleNewsData"><a href={{a.url}}>
+    <div class="col-md-6 col-md-offset-3">
+        <img class="thumb" src={{a.urlToImage}}>
+        <h3>{{a.title}}</h3>
+        <h4>{{a.description}}</h4>
+    </div>
+</a></div>
